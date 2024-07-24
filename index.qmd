@@ -5,3 +5,36 @@ title: "first-website"
 This is a Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+# Tutle
+
+```{r}
+#library(tidyverse)
+library(ggplot2)
+library(readr) 
+library(dplyr)
+
+#data <- read_csv("HARK.csv")
+
+
+count_2 <- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)
+#count <- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)
+pie_labels <- paste0(round(100 * count_2/sum(count_2), 2), "%")
+
+pie(count_2, labels = pie_labels)
+legend("right", legend = c("«GRAND TOBAKO»","«GAZPROM ARMENIA»","«Zcmc»","«GEOPROMAYNING GOLD»","«MASIS TOBAK»","«SIPIES OIL»","«FLESH»","«PHILLIP MORRIES»","«JTI ARMENIA»","«MTS ARMENIA»"),
+       fill =  c("white", "lightblue", "mistyrose","blue","red","yellow","black","green","orange"))
+
+
+
+# Загрузка необходимых библиотек
+
+ #Чтение данных из CSV-файла
+
+
+# Чтение данных из CSV-файла
+
+
+# Проверка 
+```
+
