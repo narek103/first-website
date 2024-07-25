@@ -1,1 +1,1 @@
-Sitemap: https://551ac5a5-02d1-4218-be9a-42402cedc104.netlify.app/sitemap.xml
+Sitemap: https://narek103.quarto.pub/first-website/sitemap.xml

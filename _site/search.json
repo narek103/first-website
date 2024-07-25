@@ -11,6 +11,6 @@
     "href": "index.html",
     "title": "first-website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nTutle\n\n#library(tidyverse)\nlibrary(ggplot2)\nlibrary(readr) \nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n#data &lt;- read_csv(\"HARK.csv\")\n\n\ncount_2 &lt;- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)\n#count &lt;- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)\npie_labels &lt;- paste0(round(100 * count_2/sum(count_2), 2), \"%\")\n\npie(count_2, labels = pie_labels)\nlegend(\"right\", legend = c(\"«GRAND TOBAKO»\",\"«GAZPROM ARMENIA»\",\"«Zcmc»\",\"«GEOPROMAYNING GOLD»\",\"«MASIS TOBAK»\",\"«SIPIES OIL»\",\"«FLESH»\",\"«PHILLIP MORRIES»\",\"«JTI ARMENIA»\",\"«MTS ARMENIA»\"),\n       fill =  c(\"white\", \"lightblue\", \"mistyrose\",\"blue\",\"red\",\"yellow\",\"black\",\"green\",\"orange\"))\n\n\n\n\n\n\n\n# Загрузка необходимых библиотек\n\n #Чтение данных из CSV-файла\n\n\n# Чтение данных из CSV-файла\n\n\n# Проверка"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nTutle\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAttaching package: 'reshape2'\n\n\nThe following object is masked from 'package:tidyr':\n\n    smiths"
   }
 ]

@@ -1,5 +1,7 @@
 ---
 title: "first-website"
+execute: 
+  echo: false
 ---
 
 This is a Quarto website.
@@ -8,33 +10,144 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
 # Tutle
 
+
+
 ```{r}
-#library(tidyverse)
+#| message: false
+library(tidyverse)
 library(ggplot2)
 library(readr) 
 library(dplyr)
 
-#data <- read_csv("HARK.csv")
-
-
-count_2 <- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)
-#count <- c(50.671, 45.549, 41.689, 23.020, 18.794, 17.998, 16.081, 15.224, 14.707, 13.014)
-pie_labels <- paste0(round(100 * count_2/sum(count_2), 2), "%")
-
-pie(count_2, labels = pie_labels)
-legend("right", legend = c("«GRAND TOBAKO»","«GAZPROM ARMENIA»","«Zcmc»","«GEOPROMAYNING GOLD»","«MASIS TOBAK»","«SIPIES OIL»","«FLESH»","«PHILLIP MORRIES»","«JTI ARMENIA»","«MTS ARMENIA»"),
-       fill =  c("white", "lightblue", "mistyrose","blue","red","yellow","black","green","orange"))
-
-
-
-# Загрузка необходимых библиотек
-
- #Чтение данных из CSV-файла
-
-
-# Чтение данных из CSV-файла
-
-
-# Проверка 
 ```
+
+
+
+```{r}
+data <- read.csv("Hna_mard.csv")
+ggplot(data, aes(x = Years, y = GDP)) +
+  geom_line(aes(color="red")) + 
+  geom_point(aes(color="red")) + 
+   scale_x_continuous(breaks = data$Years) +
+  labs(title = "GDP per capita",
+       x = "Years", 
+       y = "GDP") +
+  theme_minimal() 
+```
+
+
+```{r}
+data <- read.csv("bydje.csv")
+ggplot(data, aes(x = Years, y = Budget)) +
+  geom_line(aes(color="red")) + 
+  geom_point(aes(color="red")) + 
+   scale_x_continuous(breaks = data$Years) +
+  labs(title = "GDP IN YEARS",
+       x = "Years", 
+       y = "GDP") +
+  theme_minimal() 
+
+```
+
+
+
+
+```{r}
+
+# Загрузите данные из файла, пропустив первые две строки
+data_2 <- read.csv("birth.csv")
+
+# Переименуйте столбцы, если это необходимо
+colnames(data_2) <- c("year", "births", "deaths")
+
+# Преобразуйте столбец года в числовой формат, если он в виде строки
+data_2$year <- as.numeric(as.character(data_2$year))
+
+
+library("ggplot2")
+library("tidyr")
+library("reshape2")
+
+test_data_long_tidyr <- data_2 %>% pivot_longer(cols=c('births', 'deaths'),
+                    names_to='Type',
+                    values_to='value') 
+
+
+ggplot(data=test_data_long_tidyr,
+       aes(x=year, y=value, colour=Type)) +
+  geom_line()+
+  scale_colour_manual(values=c("red", "black"))
+
+
+```
+
+
+
+
+
+```{r test}
+
+ 
+
+# Загрузите данные из файла
+data_3 <- read.csv("HARK.csv")
+
+# Переименуйте столбцы, если это необходимо
+colnames(data_3) <- c("company", "city", "mil_dram")
+
+# Преобразуйте столбец mil_dram в числовой формат, удалив запятые
+data_3$mil_dram <- as.numeric(gsub(",", "", data_3$mil_dram))
+
+
+# Рассчитайте проценты
+data_3$percent <- data_3$mil_dram / sum(data_3$mil_dram) * 100
+
+# Создайте текстовые метки с процентами
+data_3$label <- paste0( round(data_3$percent, 1), "%")
+
+
+
+ggplot(data_3, aes(x = "", y = mil_dram, fill = company)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  geom_text(aes(label = label), position = position_stack(vjust = 0.5)) +
+  labs(title = "Главные налогоплательщики") +
+  theme_void() + # Убирает оси и сетку
+  theme(legend.position = "right") # Убирает легенду, так как метки добавлены на график
+
+```
+
+```{r}
+
+
+# Загрузите данные из файла
+data_3 <- read.csv("axger.csv")
+
+# Переименуйте столбцы, если это необходимо
+colnames(data_3) <- c("company", "mil_dram")
+
+# Преобразуйте столбец mil_dram в числовой формат, удалив запятые
+data_3$mil_dram <- as.numeric(gsub(",", "", data_3$mil_dram))
+
+
+# Рассчитайте проценты
+data_3$percent <- data_3$mil_dram / sum(data_3$mil_dram) * 100
+
+# Создайте текстовые метки с процентами
+data_3$label <- paste0( round(data_3$percent, 1), "%")
+
+
+
+ggplot(data_3, aes(x = "", y = mil_dram, fill = company)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  geom_text(aes(label = label), position = position_stack(vjust = 0.5)) +
+  labs(title = "Главные налогоплательщики") +
+  theme_void() + # Убирает оси и сетку
+  theme(legend.position = "right") # Убирает легенду, так как метки добавлены на график
+
+```
+
+
+
 
