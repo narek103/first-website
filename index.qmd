@@ -24,15 +24,16 @@ library(dplyr)
 
 
 ```{r}
-data <- read.csv("Hna_mard.csv")
-ggplot(data, aes(x = Years, y = GDP)) +
-  geom_line(aes(color="red")) + 
-  geom_point(aes(color="red")) + 
-   scale_x_continuous(breaks = data$Years) +
-  labs(title = "GDP per capita",
-       x = "Years", 
-       y = "GDP") +
-  theme_minimal() 
+# Загрузка данных
+years <- c(2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024)
+gdp <- c(4266, 4555, 4828, 5043, 5067, 5564, 6117, 6581, 7101, 8153, 8575, 8575, 9126)
+
+# Создание графика
+plot(years, gdp, type = "l", col = "blue", xlab = "YEARS", ylab = "GDP", main = "GDP change from 2012 to 2024")
+
+# Добавление точек данных
+points(years, gdp, col = "red", pch = 16)
+
 ```
 
 
@@ -42,7 +43,7 @@ ggplot(data, aes(x = Years, y = Budget)) +
   geom_line(aes(color="red")) + 
   geom_point(aes(color="red")) + 
    scale_x_continuous(breaks = data$Years) +
-  labs(title = "GDP IN YEARS",
+  labs(title = "State Budget",
        x = "Years", 
        y = "GDP") +
   theme_minimal() 
@@ -54,13 +55,10 @@ ggplot(data, aes(x = Years, y = Budget)) +
 
 ```{r}
 
-# Загрузите данные из файла, пропустив первые две строки
 data_2 <- read.csv("birth.csv")
 
-# Переименуйте столбцы, если это необходимо
 colnames(data_2) <- c("year", "births", "deaths")
 
-# Преобразуйте столбец года в числовой формат, если он в виде строки
 data_2$year <- as.numeric(as.character(data_2$year))
 
 
@@ -86,42 +84,33 @@ ggplot(data=test_data_long_tidyr,
 
 
 ```{r test}
-
- 
-
-# Загрузите данные из файла
 data_3 <- read.csv("HARK.csv")
 
-# Переименуйте столбцы, если это необходимо
 colnames(data_3) <- c("company", "city", "mil_dram")
 
-# Преобразуйте столбец mil_dram в числовой формат, удалив запятые
 data_3$mil_dram <- as.numeric(gsub(",", "", data_3$mil_dram))
 
 
-# Рассчитайте проценты
 data_3$percent <- data_3$mil_dram / sum(data_3$mil_dram) * 100
 
-# Создайте текстовые метки с процентами
 data_3$label <- paste0( round(data_3$percent, 1), "%")
-
-
 
 ggplot(data_3, aes(x = "", y = mil_dram, fill = company)) +
   geom_bar(stat = "identity", width = 1) +
   coord_polar("y") +
   geom_text(aes(label = label), position = position_stack(vjust = 0.5)) +
-  labs(title = "Главные налогоплательщики") +
-  theme_void() + # Убирает оси и сетку
-  theme(legend.position = "right") # Убирает легенду, так как метки добавлены на график
+  labs(title = "The main Taxpayers") +
+  theme_void() +
+  theme(legend.position = "right") 
 
 ```
 
+
+
+
 ```{r}
-
-
 # Загрузите данные из файла
-data_3 <- read.csv("axger.csv")
+data_3 <- read.csv("mmmigration.csv")
 
 # Переименуйте столбцы, если это необходимо
 colnames(data_3) <- c("company", "mil_dram")
@@ -130,24 +119,15 @@ colnames(data_3) <- c("company", "mil_dram")
 data_3$mil_dram <- as.numeric(gsub(",", "", data_3$mil_dram))
 
 
-# Рассчитайте проценты
-data_3$percent <- data_3$mil_dram / sum(data_3$mil_dram) * 100
-
-# Создайте текстовые метки с процентами
-data_3$label <- paste0( round(data_3$percent, 1), "%")
-
-
-
 ggplot(data_3, aes(x = "", y = mil_dram, fill = company)) +
   geom_bar(stat = "identity", width = 1) +
   coord_polar("y") +
-  geom_text(aes(label = label), position = position_stack(vjust = 0.5)) +
-  labs(title = "Главные налогоплательщики") +
-  theme_void() + # Убирает оси и сетку
-  theme(legend.position = "right") # Убирает легенду, так как метки добавлены на график
+  geom_text(aes(label = label)) +
+  labs(title = "DEMOGRAPHICA") +
+  theme_void() + 
+  theme(legend.position = "right")
 
 ```
-
 
 
 
